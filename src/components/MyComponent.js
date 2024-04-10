@@ -11,23 +11,32 @@ class MyComponent extends React.Component {
         age: 24
     };
 
-    handleClick(event) {
+    handleClick = (event) => {
         console.log(">> click me my button");
-        // console.log(event)
+
+        //merge state only react class
+        this.setState({
+            name: 'Ky',
+            age: Math.floor((Math.random() * 100) + 1)
+        })
+
+        // this.setState({
+
+        // })
     }
 
-    handleOneMoverOver(event) {
-        console.log(event.pageX)
+    handleOnMoverOver(event) {
+        // console.log(event.pageX)
     }
     //JSX
     render() {
         return (
 
             <div>
-                My name is {this.state.name} and I'm from {this.state.address}
-                <button onMouseOver={this.handleOneMoverOver}>Hover me</button>
-                <button onClick={this.handleClick}>Click me</button>
-            </div>
+                My name is {this.state.name} and I'm {this.state.age}
+                <button onMouseOver={this.handleOnMoverOver}>Hover me</button>
+                <button onClick={(event) => { this.handleClick(event) }}>Click me</button>
+            </div >
 
         );
     }
