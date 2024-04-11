@@ -7,28 +7,28 @@ import DisplayInfor from "./DisplayInfor";
 
 class MyComponent extends React.Component {
 
-
-
-    handleOnSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.state)
+    state = {
+        listUsers: [
+            { id: 1, name: "Kirsten", age: "28" },
+            { id: 2, name: "Ky", age: "21" },
+            { id: 3, name: "Uyen", age: "8" }
+        ]
     }
+
 
     //JSX
     render() {
-        const myInfo = ['ab', 'hb', 'jg'];
         return (
+            //DRY
             <div>
                 <UserInfor></UserInfor>
                 <br></br>
-                <DisplayInfor name="Kirsten" age="28" />
-                <hr></hr>
-                <DisplayInfor name="Ky" info={myInfo} age={36} />
-
+                <DisplayInfor
+                    listUsers={this.state.listUsers} />
             </div >
-
         );
     }
+
 }
 
 export default MyComponent;
